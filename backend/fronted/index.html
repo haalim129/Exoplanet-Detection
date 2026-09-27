@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exoplanet Finder</title>
+  <!-- Google Fonts: Orbitron for headings and Roboto for body text -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Bootstrap (optional, for grid system) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <video autoplay muted loop id="background-video">
+    <source src="space_vd.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video> 
+  
+  <div class="container container-custom">
+    <header class="header">
+      <h1>Discover Hidden Exoplanets</h1>
+      <p>Upload a CSV file with stellar flux values to detect exoplanets around your favorite star.</p>
+    </header>
+    
+    <div class="row">
+      <!-- Left info panel -->
+      <div class="col-md-3 d-none d-md-block">
+        <div class="info">
+          <h5>About Exoplanets</h5>
+          <p>Exoplanets are planets orbiting stars beyond our Solar System. Tiny variations in the star’s brightness can reveal their presence.</p>
+        </div>
+      </div>
+      
+      <!-- Center form & output -->
+      <div class="col-md-6">
+        <form id="uploadForm" enctype="multipart/form-data">
+          <div class="mb-3">
+            <input class="form-control file-input" type="file" id="csvFile" name="file" accept=".csv" required>
+          </div>
+          <button type="submit" class="custom-btn">Find Your Exoplanet</button>
+        </form>
+        
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading-container">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Analyzing...</span>
+          </div>
+          <p>Analyzing Data...</p>
+        </div>
+
+        <!-- Result Message -->
+        <div id="resultMessage" class="mt-4 text-center fw-bold"></div>
+        
+        <!-- Chart Container -->
+        <div id="chartContainer" class="chart-container">
+          <canvas id="fluxChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Right info panel -->
+      <div class="col-md-3 d-none d-md-block">
+        <div class="info">
+          <h5>How It Works</h5>
+          <p>Our machine learning model analyzes the time series of stellar flux data from your CSV file to identify subtle dips in brightness that signal an exoplanet’s transit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
